@@ -19,6 +19,7 @@ class CalorieViewController: UIViewController, UITextFieldDelegate {
         allCalories = [0]
         defaults.setValue(allCalories, forKey: "caloriesEaten")
         caloriesRemaining.text = String(userGoal)
+        setFontColor()
     }
     
     
