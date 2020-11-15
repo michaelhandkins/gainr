@@ -39,6 +39,15 @@ class CalorieViewController: UIViewController, UITextFieldDelegate {
         userGoal - totalConsumed
     }
     
+    func setFontColor() {
+        if self.caloriesRemainingValue < 0 {
+            caloriesRemaining.textColor = UIColor.red
+        } else {
+            caloriesRemaining.textColor = UIColor.systemIndigo
+        }
+    }
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,6 +66,10 @@ class CalorieViewController: UIViewController, UITextFieldDelegate {
         }
         caloriesRemaining.text = String(caloriesRemainingValue)
         
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        setFontColor()
     }
     
     @objc func keyboardWillShow(notification: NSNotification) {
@@ -99,6 +112,7 @@ class CalorieViewController: UIViewController, UITextFieldDelegate {
                 textField.text = ""
             }
         }
+        setFontColor()
     }
     
     func addDoneButtonOnKeyboard(){
