@@ -84,7 +84,12 @@ class CalorieViewController: UIViewController, UITextFieldDelegate {
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         if textField == goalField {
-            defaults.setValue(textField.text, forKey: "userGoal")
+            if textField.text != "" {
+                defaults.setValue(textField.text, forKey: "userGoal")
+            } else {
+                textField.text = String(userGoal)
+            }
+            textField.text = defaults.string(forKey: "userGoal")
             caloriesRemaining.text = String(caloriesRemainingValue)
         } else if textField == caloriesConsumed {
             if textField.text != "" {
