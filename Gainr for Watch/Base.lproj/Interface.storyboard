@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="17156" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AgC-eL-Hgc">
+    <device id="watch38"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="17035"/>
+    </dependencies>
+    <scenes>
+        <!--Interface Controller-->
+        <scene sceneID="aou-V4-d1y">
+            <objects>
+                <controller id="AgC-eL-Hgc" customClass="InterfaceController" customModule="Gainr_for_Watch" customModuleProvider="target">
+                    <items>
+                        <group width="1" height="147" alignment="left" contentMode="center" layout="vertical" id="Ny9-5c-ZsJ">
+                            <items>
+                                <label width="147" height="48" alignment="center" text="2000" textAlignment="center" baselineAdjustment="alignCenters" id="EmY-cH-Hzo">
+                                    <fontDescription key="font" style="UICTFontTextStyleTitle0"/>
+                                </label>
+                                <label width="136" height="37" alignment="center" text="Cal. remaining" textAlignment="center" baselineAdjustment="alignCenters" id="U2p-B2-G0A"/>
+                                <button width="1" alignment="center" verticalAlignment="bottom" title="Log calories" id="xj7-hy-86H">
+                                    <connections>
+                                        <segue destination="Szs-OB-KLJ" kind="push" identifier="logCaloriesSegue" id="eTV-QH-n5a"/>
+                                    </connections>
+                                </button>
+                            </items>
+                        </group>
+                    </items>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="220" y="345"/>
+        </scene>
+        <!--Interface Controller-->
+        <scene sceneID="qFo-if-gJh">
+            <objects>
+                <controller id="Szs-OB-KLJ">
+                    <items>
+                        <textField width="1" alignment="left" placeholder="Calories eaten" textContentType="one-time-code" id="dUB-oJ-QRj"/>
+                        <button width="1" alignment="left" title="Submit" id="p1q-Xw-SgL">
+                            <color key="backgroundColor" red="0.025369037151698592" green="0.46198996113989632" blue="0.016792705387333948" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </button>
+                    </items>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="494" y="345"/>
+        </scene>
+    </scenes>
+</document>
