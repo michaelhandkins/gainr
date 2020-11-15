@@ -8,10 +8,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Calorie View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="gainr" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="CalorieViewController" customModule="gainr" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -64,6 +64,7 @@
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="f42-h0-Mlw">
                                         <rect key="frame" x="19.5" y="531" width="235" height="100.5"/>
                                         <constraints>
+                                            <constraint firstAttribute="height" constant="100.5" id="6cu-NK-usF"/>
                                             <constraint firstAttribute="width" constant="235" id="ner-j5-9ne"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="76"/>
@@ -78,8 +79,14 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="eZr-hC-KWc" secondAttribute="bottom" constant="110" id="Nm1-60-tdM"/>
                             <constraint firstItem="eZr-hC-KWc" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="70" id="XM0-BN-fbu"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="eZr-hC-KWc" secondAttribute="trailing" constant="70" id="fb2-IA-ZUZ"/>
+                            <constraint firstItem="eZr-hC-KWc" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="76.5" id="iKv-Zf-dyC"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="caloriesConsumed" destination="f42-h0-Mlw" id="Oje-8j-sey"/>
+                        <outlet property="caloriesRemaining" destination="5Yh-0J-dt8" id="bF7-pH-df3"/>
+                        <outlet property="goalField" destination="2EV-jk-hs5" id="jEr-Jr-9t4"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
