@@ -29,7 +29,7 @@ class CalorieViewController: UIViewController, UITextFieldDelegate {
     }
     var userGoal: Int {
         if let userEnteredGoal = defaults.string(forKey: "userGoal") {
-            return Int(userEnteredGoal)!
+            return Int(userEnteredGoal) ?? 2000
         } else {
             return 2000
         }
@@ -57,7 +57,29 @@ class CalorieViewController: UIViewController, UITextFieldDelegate {
         }
         caloriesRemaining.text = String(caloriesRemainingValue)
         
-        
+    }
+    
+    @objc func keyboardWillShow(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            if self.view.frame.origin.y == 0 {
+                self.view.frame.origin.y -= keyboardSize.height
+            }
+        }
+    }
+
+    @objc func keyboardWillHide(notification: NSNotification) {
+        if self.view.frame.origin.y != 0 {
+            self.view.frame.origin.y = 0
+        }
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        if textField == caloriesConsumed {
+            NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+            NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+        } else {
+            NotificationCenter.default.removeObserver(self)
+        }
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
