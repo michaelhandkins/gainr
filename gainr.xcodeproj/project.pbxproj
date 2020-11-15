@@ -56,15 +56,39 @@
 		C2933637256197F0007879CA /* gainr */ = {
 			isa = PBXGroup;
 			children = (
+				C293364F256199F7007879CA /* Model */,
+				C293364E256199F2007879CA /* View */,
+				C293364D256199EB007879CA /* Controller */,
 				C2933638256197F0007879CA /* AppDelegate.swift */,
 				C293363A256197F0007879CA /* SceneDelegate.swift */,
-				C293363C256197F0007879CA /* ViewController.swift */,
-				C293363E256197F0007879CA /* Main.storyboard */,
 				C2933641256197F3007879CA /* Assets.xcassets */,
 				C2933643256197F3007879CA /* LaunchScreen.storyboard */,
 				C2933646256197F3007879CA /* Info.plist */,
 			);
 			path = gainr;
+			sourceTree = "<group>";
+		};
+		C293364D256199EB007879CA /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				C293363C256197F0007879CA /* ViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		C293364E256199F2007879CA /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C293363E256197F0007879CA /* Main.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		C293364F256199F7007879CA /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
