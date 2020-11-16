@@ -23,10 +23,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
         
     }
     
-    func session(_ session: WCSession, didReceiveMessage message: [String : Any]) {
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "receivedWatchData"), object: self, userInfo: message)
-    }
-    
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
@@ -38,6 +34,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
         }
         
         return true
+    }
+    
+    func session(_ session: WCSession, didReceiveMessage message: [String : Any]) {
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "receivedWatchData"), object: self, userInfo: message)
+        print("Notification posted")
     }
 
     // MARK: UISceneSession Lifecycle

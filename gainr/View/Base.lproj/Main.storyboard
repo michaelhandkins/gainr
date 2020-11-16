@@ -53,7 +53,7 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u3l-oH-sPT">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" pointerInteraction="YES" translatesAutoresizingMaskIntoConstraints="NO" id="u3l-oH-sPT">
                                                 <rect key="frame" x="88" y="136" width="39" height="30"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                 <state key="normal" title="Reset">

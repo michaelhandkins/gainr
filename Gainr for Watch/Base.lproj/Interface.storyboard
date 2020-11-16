@@ -20,7 +20,7 @@
                                 <button width="1" alignment="center" verticalAlignment="bottom" title="Log calories" id="xj7-hy-86H">
                                     <connections>
                                         <action selector="logButtonPressed" destination="AgC-eL-Hgc" id="KvJ-qG-vo0"/>
-                                        <segue destination="Szs-OB-KLJ" kind="push" identifier="logCaloriesSegue" id="eTV-QH-n5a"/>
+                                        <segue destination="Szs-OB-KLJ" kind="modal" identifier="logCaloriesSegue" id="eTV-QH-n5a"/>
                                     </connections>
                                 </button>
                             </items>
@@ -33,16 +33,26 @@
             </objects>
             <point key="canvasLocation" x="220" y="345"/>
         </scene>
-        <!--Interface Controller-->
+        <!--Add Calories Controller-->
         <scene sceneID="qFo-if-gJh">
             <objects>
-                <controller id="Szs-OB-KLJ">
+                <controller id="Szs-OB-KLJ" customClass="AddCaloriesController" customModule="Gainr_for_Watch_Extension">
                     <items>
-                        <textField width="1" alignment="left" placeholder="Calories eaten" textContentType="one-time-code" id="dUB-oJ-QRj"/>
+                        <textField width="1" alignment="left" placeholder="Calories eaten" textContentType="one-time-code" id="dUB-oJ-QRj">
+                            <connections>
+                                <action selector="textFieldAction:" destination="Szs-OB-KLJ" id="oxf-WX-yya"/>
+                            </connections>
+                        </textField>
                         <button width="1" alignment="left" title="Submit" id="p1q-Xw-SgL">
                             <color key="backgroundColor" red="0.025369037151698592" green="0.46198996113989632" blue="0.016792705387333948" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <connections>
+                                <action selector="submitPressed" destination="Szs-OB-KLJ" id="EfF-JI-va1"/>
+                            </connections>
                         </button>
                     </items>
+                    <connections>
+                        <outlet property="calorieField" destination="dUB-oJ-QRj" id="bRY-IZ-kMd"/>
+                    </connections>
                 </controller>
             </objects>
             <point key="canvasLocation" x="494" y="345"/>

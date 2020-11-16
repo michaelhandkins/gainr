@@ -7,9 +7,12 @@
 
 import WatchKit
 import Foundation
+import WatchConnectivity
 
 
 class InterfaceController: WKInterfaceController {
+    
+    var session = WCSession.default
 
     @IBOutlet weak var caloriesRemaining: WKInterfaceLabel!
     
@@ -26,12 +29,15 @@ class InterfaceController: WKInterfaceController {
         let message = info.userInfo
         let caloriesRemainingString = String(message!["dataForWatch"] as! Int)
         
-        caloriesRemaining.setText(caloriesRemainingString)
-        defaults.setValue(caloriesRemainingString, forKey: "caloriesRemainingFromPhone")
+        DispatchQueue.main.async {
+            self.caloriesRemaining.setText(caloriesRemainingString)
+            self.defaults.setValue(caloriesRemainingString, forKey: "caloriesRemainingFromPhone")
+        }
+        
     }
     
     override func willActivate() {
-        
+        self.session.sendMessage(["watchAwakened" : true], replyHandler: nil, errorHandler: nil)
     }
     
     override func didDeactivate() {

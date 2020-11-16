@@ -26,7 +26,6 @@ class CalorieViewController: UIViewController, UITextFieldDelegate {
         sendDataToWatch()
     }
     
-    
     let defaults = UserDefaults.standard
     var allCalories: [Int] = [0]
     var totalConsumed: Int {
@@ -52,15 +51,11 @@ class CalorieViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.addDoneButtonOnKeyboard()
         goalField.delegate = self
         caloriesConsumed.delegate = self
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(messageReceived), name: NSNotification.Name(rawValue: "receivedWatchData"), object: nil)
         
         if let safeGoal = defaults.string(forKey: "userGoal") {
             goalField.text = safeGoal
@@ -74,25 +69,34 @@ class CalorieViewController: UIViewController, UITextFieldDelegate {
         caloriesRemaining.text = String(caloriesRemainingValue)
         
         //Send data to watch
-        if self.session.isPaired == true && self.session.isWatchAppInstalled {
-            self.session.sendMessage(["dataForWatch" : self.caloriesRemainingValue], replyHandler: nil, errorHandler: nil)
+        sendDataToWatch()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(receivedDataFromWatch), name: NSNotification.Name(rawValue: "receivedWatchData"), object: nil)
+        
+    }
+    
+    @objc func receivedDataFromWatch(info: NSNotification) {
+        print("notification observed")
+        let message = info.userInfo
+        if let caloriesFromWatch = message?["caloriesFromWatch"] {
+            let caloriesToDeduct = Int(caloriesFromWatch as! String)!
+            DispatchQueue.main.async {
+                self.allCalories.append(caloriesToDeduct)
+                self.defaults.setValue(self.allCalories, forKey: "caloriesEaten")
+                self.caloriesRemaining.text = String(self.caloriesRemainingValue)
+                //Send data to watch
+                self.sendDataToWatch()
+            }
         }
         
+        if let watchAwakened = message?["watchAwakened"] {
+            sendDataToWatch()
+        }
     }
     
     func sendDataToWatch() {
         if self.session.isPaired == true && self.session.isWatchAppInstalled {
             self.session.sendMessage(["dataForWatch" : self.caloriesRemainingValue], replyHandler: nil, errorHandler: nil)
-        }
-    }
-    
-    @objc func messageReceived(info: NSNotification) {
-        let message = info.userInfo
-        
-        DispatchQueue.main.async {
-            self.allCalories.append(message!["watchCalories"] as! Int)
-            self.defaults.setValue(self.allCalories, forKey: "caloriesEaten")
-            self.caloriesRemaining.text = String(self.caloriesRemainingValue)
         }
     }
     
@@ -165,8 +169,6 @@ class CalorieViewController: UIViewController, UITextFieldDelegate {
         goalField.resignFirstResponder()
         caloriesConsumed.resignFirstResponder()
     }
-
-
 
 }
 

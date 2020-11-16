@@ -22,6 +22,7 @@
 		C2ADB4022561D3FD002BC1EE /* ComplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2ADB4012561D3FD002BC1EE /* ComplicationController.swift */; };
 		C2ADB4042561D3FD002BC1EE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C2ADB4032561D3FD002BC1EE /* Assets.xcassets */; };
 		C2ADB4092561D3FD002BC1EE /* Gainr for Watch.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = C2ADB3EA2561D3FA002BC1EE /* Gainr for Watch.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		C2ADB41625621EBC002BC1EE /* AddCaloriesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2ADB41525621EBC002BC1EE /* AddCaloriesController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -87,6 +88,7 @@
 		C2ADB4032561D3FD002BC1EE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C2ADB4052561D3FD002BC1EE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C2ADB4062561D3FD002BC1EE /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
+		C2ADB41525621EBC002BC1EE /* AddCaloriesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCaloriesController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -185,6 +187,7 @@
 				C2ADB4032561D3FD002BC1EE /* Assets.xcassets */,
 				C2ADB4052561D3FD002BC1EE /* Info.plist */,
 				C2ADB4062561D3FD002BC1EE /* PushNotificationPayload.apns */,
+				C2ADB41525621EBC002BC1EE /* AddCaloriesController.swift */,
 			);
 			path = "Gainr for Watch Extension";
 			sourceTree = "<group>";
@@ -333,6 +336,7 @@
 				C2ADB4002561D3FD002BC1EE /* NotificationController.swift in Sources */,
 				C2ADB4022561D3FD002BC1EE /* ComplicationController.swift in Sources */,
 				C2ADB3FE2561D3FD002BC1EE /* ExtensionDelegate.swift in Sources */,
+				C2ADB41625621EBC002BC1EE /* AddCaloriesController.swift in Sources */,
 				C2ADB3FC2561D3FD002BC1EE /* InterfaceController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
