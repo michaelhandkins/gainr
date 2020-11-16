@@ -19,12 +19,16 @@
                                 <label width="136" height="37" alignment="center" text="Cal. remaining" textAlignment="center" baselineAdjustment="alignCenters" id="U2p-B2-G0A"/>
                                 <button width="1" alignment="center" verticalAlignment="bottom" title="Log calories" id="xj7-hy-86H">
                                     <connections>
+                                        <action selector="logButtonPressed" destination="AgC-eL-Hgc" id="KvJ-qG-vo0"/>
                                         <segue destination="Szs-OB-KLJ" kind="push" identifier="logCaloriesSegue" id="eTV-QH-n5a"/>
                                     </connections>
                                 </button>
                             </items>
                         </group>
                     </items>
+                    <connections>
+                        <outlet property="caloriesRemaining" destination="EmY-cH-Hzo" id="mQc-cp-0MF"/>
+                    </connections>
                 </controller>
             </objects>
             <point key="canvasLocation" x="220" y="345"/>

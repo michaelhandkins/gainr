@@ -11,12 +11,27 @@ import Foundation
 
 class InterfaceController: WKInterfaceController {
 
+    @IBOutlet weak var caloriesRemaining: WKInterfaceLabel!
+    
+    let defaults = UserDefaults.standard
+    
     override func awake(withContext context: Any?) {
         // Configure interface objects here.
+        caloriesRemaining.setText(defaults.string(forKey: "caloriesRemainingFromPhone"))
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(receivedDataFromPhone(info:)), name: NSNotification.Name(rawValue: "receivedPhoneData"), object: nil)
+    }
+    
+    @objc func receivedDataFromPhone(info: NSNotification) {
+        let message = info.userInfo
+        let caloriesRemainingString = String(message!["dataForWatch"] as! Int)
+        
+        caloriesRemaining.setText(caloriesRemainingString)
+        defaults.setValue(caloriesRemainingString, forKey: "caloriesRemainingFromPhone")
     }
     
     override func willActivate() {
-        // This method is called when watch view controller is about to be visible to user
+        
     }
     
     override func didDeactivate() {

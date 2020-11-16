@@ -6,8 +6,11 @@
 //
 
 import UIKit
+import WatchConnectivity
 
 class CalorieViewController: UIViewController, UITextFieldDelegate {
+    
+    let session = WCSession.default
 
     @IBOutlet weak var goalField: UITextField!
     
@@ -20,6 +23,7 @@ class CalorieViewController: UIViewController, UITextFieldDelegate {
         defaults.setValue(allCalories, forKey: "caloriesEaten")
         caloriesRemaining.text = String(userGoal)
         setFontColor()
+        sendDataToWatch()
     }
     
     
@@ -56,6 +60,8 @@ class CalorieViewController: UIViewController, UITextFieldDelegate {
         goalField.delegate = self
         caloriesConsumed.delegate = self
         
+        NotificationCenter.default.addObserver(self, selector: #selector(messageReceived), name: NSNotification.Name(rawValue: "receivedWatchData"), object: nil)
+        
         if let safeGoal = defaults.string(forKey: "userGoal") {
             goalField.text = safeGoal
         } else {
@@ -67,6 +73,27 @@ class CalorieViewController: UIViewController, UITextFieldDelegate {
         }
         caloriesRemaining.text = String(caloriesRemainingValue)
         
+        //Send data to watch
+        if self.session.isPaired == true && self.session.isWatchAppInstalled {
+            self.session.sendMessage(["dataForWatch" : self.caloriesRemainingValue], replyHandler: nil, errorHandler: nil)
+        }
+        
+    }
+    
+    func sendDataToWatch() {
+        if self.session.isPaired == true && self.session.isWatchAppInstalled {
+            self.session.sendMessage(["dataForWatch" : self.caloriesRemainingValue], replyHandler: nil, errorHandler: nil)
+        }
+    }
+    
+    @objc func messageReceived(info: NSNotification) {
+        let message = info.userInfo
+        
+        DispatchQueue.main.async {
+            self.allCalories.append(message!["watchCalories"] as! Int)
+            self.defaults.setValue(self.allCalories, forKey: "caloriesEaten")
+            self.caloriesRemaining.text = String(self.caloriesRemainingValue)
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -105,36 +132,39 @@ class CalorieViewController: UIViewController, UITextFieldDelegate {
             }
             textField.text = defaults.string(forKey: "userGoal")
             caloriesRemaining.text = String(caloriesRemainingValue)
+            sendDataToWatch()
         } else if textField == caloriesConsumed {
             if textField.text != "" {
                 allCalories.append(Int(textField.text!)!)
                 defaults.setValue(allCalories, forKey: "caloriesEaten")
                 caloriesRemaining.text = String(caloriesRemainingValue)
                 textField.text = ""
+                //Send data to watch
+                sendDataToWatch()
             }
         }
         setFontColor()
     }
     
     func addDoneButtonOnKeyboard(){
-            let doneToolbar: UIToolbar = UIToolbar(frame: CGRect.init(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 50))
-            doneToolbar.barStyle = .default
-
-            let flexSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
-            let done: UIBarButtonItem = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(self.doneButtonAction))
-
-            let items = [flexSpace, done]
-            doneToolbar.items = items
-            doneToolbar.sizeToFit()
-
-            goalField.inputAccessoryView = doneToolbar
-            caloriesConsumed.inputAccessoryView = doneToolbar
-        }
-
-        @objc func doneButtonAction(){
-            goalField.resignFirstResponder()
-            caloriesConsumed.resignFirstResponder()
-        }
+        let doneToolbar: UIToolbar = UIToolbar(frame: CGRect.init(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 50))
+        doneToolbar.barStyle = .default
+        
+        let flexSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        let done: UIBarButtonItem = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(self.doneButtonAction))
+        
+        let items = [flexSpace, done]
+        doneToolbar.items = items
+        doneToolbar.sizeToFit()
+        
+        goalField.inputAccessoryView = doneToolbar
+        caloriesConsumed.inputAccessoryView = doneToolbar
+    }
+    
+    @objc func doneButtonAction(){
+        goalField.resignFirstResponder()
+        caloriesConsumed.resignFirstResponder()
+    }
 
 
 
