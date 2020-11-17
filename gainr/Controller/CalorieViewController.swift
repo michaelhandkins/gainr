@@ -60,7 +60,7 @@ class CalorieViewController: UIViewController, UITextFieldDelegate {
         if let safeGoal = defaults.string(forKey: "userGoal") {
             goalField.text = safeGoal
         } else {
-            goalField.placeholder = "2000"
+            goalField.placeholder = "Enter Goal"
         }
         
         if let safeAllCalories = defaults.array(forKey: "caloriesEaten") {
@@ -89,7 +89,7 @@ class CalorieViewController: UIViewController, UITextFieldDelegate {
             }
         }
         
-        if let watchAwakened = message?["watchAwakened"] {
+        if (message?["watchAwakened"]) != nil {
             sendDataToWatch()
         }
     }
