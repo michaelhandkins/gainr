@@ -31,6 +31,11 @@ class InterfaceController: WKInterfaceController {
         
         DispatchQueue.main.async {
             self.caloriesRemaining.setText(caloriesRemainingString)
+            if (message!["dataForWatch"] as! Int) < 0 {
+                self.caloriesRemaining.setTextColor(UIColor.red)
+            } else {
+                self.caloriesRemaining.setTextColor(UIColor.white)
+            }
             self.defaults.setValue(caloriesRemainingString, forKey: "caloriesRemainingFromPhone")
         }
         
