@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -52,22 +53,22 @@
                                         <rect key="frame" x="0.0" y="114" width="414" height="283.66666666666669"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="YyI-xX-BlG">
-                                                <rect key="frame" x="87" y="54.999999999999986" width="240" height="173.66666666666663"/>
+                                                <rect key="frame" x="89.333333333333329" y="54.999999999999986" width="235.33333333333337" height="173.66666666666663"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JSO-bH-v8D">
-                                                        <rect key="frame" x="0.0" y="0.0" width="240" height="122"/>
-                                                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="102"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="235.33333333333334" height="122"/>
+                                                        <fontDescription key="fontDescription" type="system" weight="thin" pointSize="102"/>
                                                         <color key="textColor" systemColor="systemIndigoColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Calories remaining" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Iih-af-ZAE">
-                                                        <rect key="frame" x="46.666666666666657" y="122.00000000000001" width="147" height="21.666666666666671"/>
+                                                        <rect key="frame" x="44.333333333333329" y="122.00000000000001" width="147" height="21.666666666666671"/>
                                                         <fontDescription key="fontDescription" type="system" weight="light" pointSize="18"/>
                                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TXF-9c-2BE">
-                                                        <rect key="frame" x="100.66666666666666" y="143.66666666666669" width="39" height="30"/>
+                                                        <rect key="frame" x="98.333333333333329" y="143.66666666666669" width="38.999999999999986" height="30"/>
                                                         <state key="normal" title="Reset">
                                                             <color key="titleColor" systemColor="systemIndigoColor"/>
                                                         </state>
@@ -111,7 +112,7 @@
                                                             <constraint firstAttribute="height" constant="114" id="lzq-2N-nPJ"/>
                                                         </constraints>
                                                         <color key="textColor" systemColor="systemIndigoColor"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="87"/>
+                                                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="87"/>
                                                         <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                                     </textField>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Calories consumed" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vOd-Gl-SLc">
