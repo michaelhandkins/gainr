@@ -7,9 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		C242F8822565CEBF00C575CC /* even_phone.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = C242F87F2565CEBE00C575CC /* even_phone.jpeg */; };
-		C242F8832565CEBF00C575CC /* watch_cal_2.png in Resources */ = {isa = PBXBuildFile; fileRef = C242F8802565CEBE00C575CC /* watch_cal_2.png */; };
-		C242F8842565CEBF00C575CC /* watch2.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = C242F8812565CEBF00C575CC /* watch2.jpeg */; };
+		C242F8902565D10600C575CC /* even_phone_small.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C242F88E2565D10600C575CC /* even_phone_small.jpg */; };
+		C242F8912565D10600C575CC /* watch_cal_2_small.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C242F88F2565D10600C575CC /* watch_cal_2_small.jpg */; };
 		C2933639256197F0007879CA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2933638256197F0007879CA /* AppDelegate.swift */; };
 		C293363B256197F0007879CA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C293363A256197F0007879CA /* SceneDelegate.swift */; };
 		C293363D256197F0007879CA /* CalorieViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C293363C256197F0007879CA /* CalorieViewController.swift */; };
@@ -71,9 +70,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		C242F87F2565CEBE00C575CC /* even_phone.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = even_phone.jpeg; sourceTree = "<group>"; };
-		C242F8802565CEBE00C575CC /* watch_cal_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = watch_cal_2.png; sourceTree = "<group>"; };
-		C242F8812565CEBF00C575CC /* watch2.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = watch2.jpeg; sourceTree = "<group>"; };
+		C242F88B2565D07100C575CC /* watch_cal_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = watch_cal_2.png; path = "../../Calorie Counter Images/watch_cal_2.png"; sourceTree = "<group>"; };
+		C242F88E2565D10600C575CC /* even_phone_small.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = even_phone_small.jpg; path = "../../Calorie Counter Images/even_phone_small.jpg"; sourceTree = "<group>"; };
+		C242F88F2565D10600C575CC /* watch_cal_2_small.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = watch_cal_2_small.jpg; sourceTree = "<group>"; };
 		C2933635256197F0007879CA /* gainr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = gainr.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2933638256197F0007879CA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C293363A256197F0007879CA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -118,9 +117,9 @@
 		C293362C256197F0007879CA = {
 			isa = PBXGroup;
 			children = (
-				C242F87F2565CEBE00C575CC /* even_phone.jpeg */,
-				C242F8802565CEBE00C575CC /* watch_cal_2.png */,
-				C242F8812565CEBF00C575CC /* watch2.jpeg */,
+				C242F88E2565D10600C575CC /* even_phone_small.jpg */,
+				C242F88F2565D10600C575CC /* watch_cal_2_small.jpg */,
+				C242F88B2565D07100C575CC /* watch_cal_2.png */,
 				C2933637256197F0007879CA /* gainr */,
 				C2ADB3EB2561D3FA002BC1EE /* Gainr for Watch */,
 				C2ADB3FA2561D3FD002BC1EE /* Gainr for Watch Extension */,
@@ -302,11 +301,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C242F8832565CEBF00C575CC /* watch_cal_2.png in Resources */,
+				C242F8912565D10600C575CC /* watch_cal_2_small.jpg in Resources */,
 				C2933645256197F3007879CA /* LaunchScreen.storyboard in Resources */,
-				C242F8842565CEBF00C575CC /* watch2.jpeg in Resources */,
 				C2933642256197F3007879CA /* Assets.xcassets in Resources */,
-				C242F8822565CEBF00C575CC /* even_phone.jpeg in Resources */,
+				C242F8902565D10600C575CC /* even_phone_small.jpg in Resources */,
 				C2933640256197F0007879CA /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
