@@ -1,4 +1,4 @@
-# gainr
+# Watch Calorie Counter
 A simple calorie counting app that pairs with Apple Watch.
 
 ## Technology Used
