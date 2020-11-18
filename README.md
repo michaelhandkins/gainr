@@ -15,7 +15,7 @@ By scrolling down slightly, the user will also see a "reset" button which will r
 
 ![](https://github.com/michaelhandkins/gainr/blob/main/watch_cal_2_small.jpg)
 
-After hitting "submit", the user will then be taken to a screen where they can enter the number of calories they would like to log either via a number pad, speech-to-text, or by writing out the number with their finger.
+After hitting "Log calories", the user will then be taken to a screen where they can enter the number of calories they would like to log either via a number pad, speech-to-text, or by writing out the number with their finger. Hitting "Submit" will then transfer the data to the phone to update the remaining calories, which will also then be sent back to the watch.
 
 ![](https://github.com/michaelhandkins/gainr/blob/main/watch2.jpeg)
 
