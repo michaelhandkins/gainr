@@ -15,7 +15,6 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate, WCSessionDelegate {
     
 
     func applicationDidFinishLaunching() {
-        // Perform any final initialization of your application.
         if WCSession.isSupported() {
             let session = WCSession.default
             session.delegate = self
@@ -33,6 +32,7 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate, WCSessionDelegate {
     }
     
     func session(_ session: WCSession, didReceiveMessage message: [String : Any]) {
+        //Post a notification to let observers know that we received data from the phone
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "receivedPhoneData"), object: self, userInfo: message)
     }
 

@@ -12,16 +12,23 @@ import WatchConnectivity
 
 class InterfaceController: WKInterfaceController {
     
+    //The session facilitates the flow of data between the iPhone and Apple Watch
     var session = WCSession.default
 
     @IBOutlet weak var caloriesRemaining: WKInterfaceLabel!
     
     let defaults = UserDefaults.standard
     
+    @IBAction func resetPressed() {
+        self.session.sendMessage(["watchResetPressed" : true], replyHandler: nil, errorHandler: nil)
+    }
+    
+    
     override func awake(withContext context: Any?) {
-        // Configure interface objects here.
+        //Set the calories remaining label to show the calories remaining according to the last update from the phone, which is stored using User Defaults
         caloriesRemaining.setText(defaults.string(forKey: "caloriesRemainingFromPhone"))
         
+        //Add an observer of the notification that gets posted whenever data is received from the phone
         NotificationCenter.default.addObserver(self, selector: #selector(receivedDataFromPhone(info:)), name: NSNotification.Name(rawValue: "receivedPhoneData"), object: nil)
     }
     
@@ -29,6 +36,7 @@ class InterfaceController: WKInterfaceController {
         let message = info.userInfo
         let caloriesRemainingString = String(message!["dataForWatch"] as! Int)
         
+        //Update the calories remaining text on the main thread along with the text color if necessary, then save the new calories remaining data in User Defaults
         DispatchQueue.main.async {
             self.caloriesRemaining.setText(caloriesRemainingString)
             if (message!["dataForWatch"] as! Int) < 0 {
@@ -42,6 +50,7 @@ class InterfaceController: WKInterfaceController {
     }
     
     override func willActivate() {
+        //Inform the phone that the watch just moved into the foreground and needs updated calories remaining data
         self.session.sendMessage(["watchAwakened" : true], replyHandler: nil, errorHandler: nil)
     }
     

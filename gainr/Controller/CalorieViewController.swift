@@ -10,14 +10,13 @@ import WatchConnectivity
 
 class CalorieViewController: UIViewController, UITextFieldDelegate {
     
+    
+    //The session facilitates the flow of data between the iPhone and Apple Watch
     let session = WCSession.default
 
     @IBOutlet weak var goalField: UITextField!
-    
     @IBOutlet weak var caloriesRemaining: UILabel!
-    
     @IBOutlet weak var caloriesConsumed: UITextField!
-    
     @IBAction func clearButtonPressed(_ sender: UIButton) {
         allCalories = [0]
         defaults.setValue(allCalories, forKey: "caloriesEaten")
@@ -27,6 +26,7 @@ class CalorieViewController: UIViewController, UITextFieldDelegate {
     }
     
     let defaults = UserDefaults.standard
+    
     var allCalories: [Int] = [0]
     var totalConsumed: Int {
         allCalories.reduce(0, +)
@@ -80,6 +80,8 @@ class CalorieViewController: UIViewController, UITextFieldDelegate {
         let message = info.userInfo
         if let caloriesFromWatch = message?["caloriesFromWatch"] {
             let caloriesToDeduct = Int(caloriesFromWatch as! String)!
+        
+            //Perform the following changes on the main thread
             DispatchQueue.main.async {
                 self.allCalories.append(caloriesToDeduct)
                 self.defaults.setValue(self.allCalories, forKey: "caloriesEaten")
@@ -90,11 +92,23 @@ class CalorieViewController: UIViewController, UITextFieldDelegate {
         }
         
         if (message?["watchAwakened"]) != nil {
+            //When the watch is awakened, make sure it gets the current info from the phone
             sendDataToWatch()
+        }
+        
+        if (message?["watchResetPressed"]) != nil {
+            DispatchQueue.main.async {
+                self.allCalories = [0]
+                self.defaults.setValue(self.allCalories, forKey: "caloriesEaten")
+                self.caloriesRemaining.text = String(self.userGoal)
+                self.setFontColor()
+                self.sendDataToWatch()
+            }
         }
     }
     
     func sendDataToWatch() {
+        //Make sure that the watch app is downloaded and that the watch paired with the phone, then send data
         if self.session.isPaired == true && self.session.isWatchAppInstalled {
             self.session.sendMessage(["dataForWatch" : self.caloriesRemainingValue], replyHandler: nil, errorHandler: nil)
         }
@@ -123,6 +137,7 @@ class CalorieViewController: UIViewController, UITextFieldDelegate {
             NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
             NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
         } else {
+            //If the goalField is the field being edited, don't check to see if the keyboard will show or hide
             NotificationCenter.default.removeObserver(self)
         }
     }
@@ -130,20 +145,26 @@ class CalorieViewController: UIViewController, UITextFieldDelegate {
     func textFieldDidEndEditing(_ textField: UITextField) {
         if textField == goalField {
             if textField.text != "" {
+                //Use User Defaults to save the user's calorie consumption goal
                 defaults.setValue(textField.text, forKey: "userGoal")
             } else {
+                //If they left the textfield blank, use their most recently entered goal or the default of 2000
                 textField.text = String(userGoal)
             }
+            //Regardless, set the text field's text to display their current goal...
             textField.text = defaults.string(forKey: "userGoal")
+            //...then update the calories remaining label to reflect the calories remaining in light of the user's new goal
             caloriesRemaining.text = String(caloriesRemainingValue)
+            //Send the updated data to the watch
             sendDataToWatch()
         } else if textField == caloriesConsumed {
             if textField.text != "" {
+                //Add the new value to the list of calories consumed by the user, then store that list in User Defaults
                 allCalories.append(Int(textField.text!)!)
                 defaults.setValue(allCalories, forKey: "caloriesEaten")
                 caloriesRemaining.text = String(caloriesRemainingValue)
                 textField.text = ""
-                //Send data to watch
+                //Send updated data to watch
                 sendDataToWatch()
             }
         }
